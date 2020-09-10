@@ -24,7 +24,7 @@
 		"navigationBarBackgroundColor": "#007AFF",
 		"backgroundColor": "#FFFFFF",
 		"navigationStyle": "custom"
-	},
+	}/* ,
 	"tabBar": {
 		"color": "#ADADAD",
 		"selectedColor": "FEE42A",
@@ -51,7 +51,6 @@
 			"iconPath": "/static/tabbar/home.png",
 			"selectedIconPath": "/static/tabbar/homeed.png"
 		}]
-	},
-	"usingComponts": true
+	} */
 
 }
