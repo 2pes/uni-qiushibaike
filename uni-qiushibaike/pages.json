@@ -2,7 +2,45 @@
 	"pages": [{
 		"path": "pages/index/index",
 		"style": {
-			"navigationBarTitleText": "仿糗事百科"
+			// "navigationBarTitleText": "仿糗事百科" //这里是不需要导航栏的所以不写这个
+			"app-plus": {
+				"scrollIndicator": "none",
+				//隐藏滚动条
+				"titleNView": {
+					//导航栏，这里是一个对象
+					// 搜索框配置
+					"searchInput": {
+						//搜索框，又有一个对象
+						"align": "center",
+						"backgroundColor": "#E2E2E2",
+						"borderRadius": "4px",
+						"placeholder": "搜索糗事",
+						"placeholderColor": "#CCCCCC",
+						"disabled": true
+					},
+					// 配置按钮--这里是一个数组
+					"buttons": [
+						// 左边
+						{
+							"color": "FF9619",
+							"colorPressed": "#BBBBBB",
+							"float": "left",
+							"fontSize": "30px",
+							"fontSrc": "/static/font/icon.ttf",
+							"text": "\ue609"
+						},
+						// 右边
+						{
+							"color": "#000000",
+							"colorPressed": "#BBBBBB",
+							"float": "right",
+							"fontSize": "30rpx",
+							"fontSrc": "/static/font/icon.ttf",
+							"text": "\ue653"
+						}
+					]
+				}
+			}
 		}
 	}, {
 		"path": "pages/news/news",
@@ -13,23 +51,23 @@
 	}, {
 		"path": "pages/home/home",
 		"style": {}
-	}    ,{
-            "path" : "pages/demo/demo",
-            "style" : {}
-        }
-    ],
+	}, {
+		"path": "pages/demo/demo",
+		"style": {}
+	}],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#007AFF",
-		"backgroundColor": "#FFFFFF",
-		"navigationStyle": "custom"
-	}/* ,
+		"navigationBarTextStyle": "black",
+		// "navigationBarTitleText": "仿糗事百科",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+		/* ,
+				"navigationStyle": "custom" */
+	},
 	"tabBar": {
-		"color": "#ADADAD",
-		"selectedColor": "FEE42A",
-		"backgroundColor": "#FFFFFF",
+		"color": "#B5B5B5",
+		"selectedColor": "#FEE42B",
 		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
 		"list": [{
 			"text": "糗事",
 			"pagePath": "pages/index/index",
@@ -51,6 +89,6 @@
 			"iconPath": "/static/tabbar/home.png",
 			"selectedIconPath": "/static/tabbar/homeed.png"
 		}]
-	} */
+	}
 
 }

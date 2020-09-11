@@ -1,32 +1,8 @@
 <script>
-	import Vue from 'vue'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch');
-			uni.getSystemInfo({
-				success: function(e) {
-					
-					// #ifndef MP
-					Vue.prototype.StatusBar = e.statusBarHeight;
-					if (e.platform == 'android') {
-						Vue.prototype.CustomBar = e.statusBarHeight + 50;
-					} else {
-						Vue.prototype.CustomBar = e.statusBarHeight + 45;
-					};
-					// #endif
-					// #ifdef MP-WEIXIN
-					Vue.prototype.StatusBar = e.statusBarHeight;
-					let custom = wx.getMenuButtonBoundingClientRect();
-					Vue.prototype.Custom = custom;
-					Vue.prototype.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-					console.log(e.statusBarHeight);
-					// #endif       
-					// #ifdef MP-ALIPAY
-					Vue.prototype.StatusBar = e.statusBarHeight;
-					Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight;
-					// #endif
-				}
-			})
+
 		},
 		onShow: function() {
 			console.log('App Show');
@@ -38,8 +14,14 @@
 </script>
 
 <style>
-	@import "colorui/main.css";
-	@import "colorui/icon.css";
+	/*每个页面公共css */
+	@import './common/uni.css';
+	/* 引用第三方图表库--阿里 */
+	@import './common/iconfont.css';
+	/* @import url("https://at.alicdn.com/t/font_1663690_krhhk9r8qua.css"); */
+	/* 引用第三方动画库--animate.css */
+	@import './common/animate.css';
+	@import './common/common.css';
 
 	/* 解决头条小程序组件内引入字体不生效的问题 */
 	/* #ifdef MP-TOUTIAO */
