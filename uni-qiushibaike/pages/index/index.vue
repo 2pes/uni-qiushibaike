@@ -206,6 +206,28 @@
 				}
 			})
 		},
+		//监听原生搜索框点击事件
+		onNavigationBarSearchInputClicked() {
+			uni.navigateTo({
+				url: '../search/search'
+			})
+		},
+		//监听原生标题导航按钮点击事件
+		onNavigationBarButtonTap(e) {
+			console.log(e.index);
+			switch (e.index) {
+				case 0:
+					break;
+				case 1:
+					//打开发布页面
+					uni.navigateTo({
+						url: '../add-input/add-input'
+					})
+					break;
+
+			}
+
+		},
 		methods: {
 			loadmore(index) {
 				console.log(index);
@@ -256,6 +278,6 @@
 		font-size: 14px;
 		line-height: 24px;
 
-		
+
 	}
 </style>
