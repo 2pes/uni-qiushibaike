@@ -5,6 +5,7 @@
 			// "navigationBarTitleText": "仿糗事百科" //这里是不需要导航栏的所以不写这个
 			"app-plus": {
 				"scrollIndicator": "none",
+				"bounce":"none",
 				//隐藏滚动条
 				"titleNView": {
 					//导航栏，这里是一个对象
