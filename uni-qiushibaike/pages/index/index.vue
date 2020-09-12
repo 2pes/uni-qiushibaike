@@ -5,10 +5,20 @@
 			<swiper class="swiper-box" :style="{height:swiperHeight+'px'}" :current="tabIndex" @change="tabChange">
 				<swiper-item v-for="(items,index) in newsList" :key="index">
 					<scroll-view scroll-y class="list" @scrolltolower="loadmore(index)">
-						<block v-for="(item,index1) in items.list" :key="index1">
-							<index-list :item="item" :index="index1"></index-list>
-						</block>
-						<load-more :loadtext="items.loadtext"></load-more>
+						<template v-if="items.list.length>0">
+							<!-- 列表内容 -->
+							<block v-for="(item,index1) in items.list" :key="index1">
+								<index-list :item="item" :index="index1"></index-list>
+							</block>
+							<!-- 加载更多 -->
+							<load-more :loadtext="items.loadtext"></load-more>
+						</template>
+
+						<template v-else>
+							<!-- 默认无内容 -->
+							<no-thing></no-thing>
+						</template>
+
 					</scroll-view>
 				</swiper-item>
 			</swiper>
@@ -20,11 +30,13 @@
 	import indexList from "../../components/index/index-list.vue";
 	import swiperTabHead from "../../components/index/swiper-tab-head.vue";
 	import loadMore from "../../components/common/load-more.vue";
+	import noThing from "../../components/common/no-thing.vue";
 	export default {
 		components: {
 			indexList,
 			swiperTabHead,
-			loadMore
+			loadMore,
+			noThing
 		},
 		data() {
 			return {
@@ -137,6 +149,15 @@
 						sharenum: 11, // 转发（分享）
 
 					}]
+				}, {
+					loadtext: "上拉加载更多",
+					list: []
+				}, {
+					loadtext: "上拉加载更多",
+					list: []
+				}, {
+					loadtext: "上拉加载更多",
+					list: []
 				}],
 				list: [{
 
@@ -187,7 +208,7 @@
 		},
 		methods: {
 			loadmore(index) {
-console.log(index);
+				console.log(index);
 				if (this.newsList[index].loadtext != '上拉加载更多') {
 					return;
 				}
@@ -235,5 +256,6 @@ console.log(index);
 		font-size: 14px;
 		line-height: 24px;
 
+		
 	}
 </style>
