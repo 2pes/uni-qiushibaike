@@ -22,11 +22,11 @@
 		<view class="index-list4 u-f-ac u-f-jsb">
 			<view class="u-f-ac">
 				<view class="u-f-ac " :class="{'active':(item.infonum.index==1)}" @tap="caozuo('ding')">
-					<view class="icon iconfont icon-zengjia"></view>{{item.infonum.dingnum}}
+					<view class="icon iconfont icon-icon_xiaolian-mian"></view>{{item.infonum.dingnum}}
 
 				</view>
 				<view class="u-f-ac" :class="{'active':(item.infonum.index==2)}" @tap="caozuo('cai')">
-					<view class="icon iconfont icon-zengjia"></view>{{item.infonum.cainum}}
+					<view class="icon iconfont icon-kulian"></view>{{item.infonum.cainum}}
 				</view>
 			</view>
 			<view class="u-f-ac">
@@ -35,7 +35,7 @@
 
 				</view>
 				<view class="u-f-ac">
-					<view class="icon iconfont icon-zengjia"></view>{{item.sharenum}}
+					<view class="icon iconfont icon-zhuanfa"></view>{{item.sharenum}}
 				</view>
 			</view>
 		</view>
