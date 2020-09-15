@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-nav-bar left-icon="arrowleft" :statusBar="true" rightText="发布" @clickLeft="back" @clickRight="submit">
-			<view class="u-f-ajc" @tap="changelook">
+			<view class="nav-tab-bar u-f-ajc" @tap="changelook">
 				{{yinsi}}
 				<view class="icon iconfont icon-xialazhankai"></view>
 			</view>
@@ -105,6 +105,11 @@
 </script>
 
 <style lang="scss" scoped>
+	.nav-tab-bar {
+		width: 100%;
+		margin-left: -20rpx;
+		
+	}
 	uni-textarea {
 		border: 1rpx solid #EEEEEE;
 	}

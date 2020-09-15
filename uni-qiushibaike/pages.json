@@ -45,13 +45,19 @@
 		}
 	}, {
 		"path": "pages/news/news",
-		"style": {}
+		"style": {
+			"app-plus": {
+				"titleNView": false
+			}
+		}
 	}, {
 		"path": "pages/paper/paper",
 		"style": {}
 	}, {
 		"path": "pages/home/home",
-		"style": {}
+		"style": {
+
+		}
 	}, {
 		"path": "pages/demo/demo",
 		"style": {}

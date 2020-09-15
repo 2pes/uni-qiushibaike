@@ -14,7 +14,7 @@
 			<image :src="item.titlepic" mode="widthFix" lazy-load @tap="opendetail"></image>
 			<!-- 视频 -->
 			<template v-if="item.type=='video'">
-				<view class="icon iconfont icon-zengjia index-list-play"></view>
+				<view class="icon iconfont icon-bofang index-list-play"></view>
 				<view class="index-list-playinfo">{{item.playnum}}万次播放 {{item.long}}</view>
 			</template>
 
