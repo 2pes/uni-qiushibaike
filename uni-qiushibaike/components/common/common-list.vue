@@ -16,7 +16,7 @@
 				<!-- 视频 -->
 				<template v-if="item.video">
 					<view class="icon iconfont icon-bofang index-list-play"></view>
-					<view class="index-list-playinfo">{{item.video.playnum}} 次播放 {{item.video.long}}</view>
+					<view class="index-list-playinfo">{{item.video.looknum}} 次播放 {{item.video.long}}</view>
 				</template>
 
 				<view v-if="item.share" class="common-list-share u-f-ac">
@@ -117,6 +117,7 @@
 
 			>view:nth-child(3) {
 				position: relative;
+				margin-bottom: 10rpx;
 
 				.index-list-play {
 					position: absolute;
@@ -158,6 +159,7 @@
 				>view:nth-child(2)>view {
 					margin-left: 10rpx;
 					padding-left: 5rpx;
+					font-size: 28rpx;
 				}
 			}
 		}

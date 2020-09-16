@@ -1,47 +1,46 @@
 <template>
 	<view>
-		<!-- 头部导航 -->
-		<uni-nav-bar fixed="true" :statusBar="true" @clickRight="openAdd">
-			<!-- 左边 -->
-			<block slot="left">
-				<view class="nav-left">
-					<view class="icon iconfont icon-qiandao"></view>
-				</view>
-			</block>
-			<!-- 中间 -->
-			<view class="nav-tab-bar u-f-ajc">
-				<block v-for="(tab,index) in tabBars" :key="tab.id">
-					<view class="u-f-ajc" :class="{'active':tabIndex==index}" @tap="changeTab(index)">{{tab.name}}
-						<view v-if="(tabIndex==index)" class="nav-tab-bar-line"></view>
-					</view>
-				</block>
-
-
-			</view>
-			<!-- 右边 -->
-			<block slot="right">
-				<view class="nav-right u-f-ajc">
-					<view class="icon iconfont icon-bianji1"></view>
-				</view>
-			</block>
-		</uni-nav-bar>
-		<!-- 列表 -->
-		<block v-for="(item,index) in list" :key="index">
-			<common-list :item="item" :index="index"></common-list>
-		</block>
+		<news-nav-bar :tabBars="tabBars" :tabIndex="tabIndex" @change-tab="changeTab"></news-nav-bar>
+		<view class="uni-tab-bar">
+			<swiper class="swiper-box" :style="{height:swiperHeight+'px'}" :current="tabIndex" @change="tabChange">
+				<swiper-item>
+					<scroll-view scroll-y class="list" @scrolltolower="loadmore()">
+						<!-- 列表 -->
+						<block v-for="(item,index) in guanzhu.list" :key="index">
+							<common-list :item="item" :index="index"></common-list>
+						</block>
+						<!-- 加载更多 -->
+						<load-more :loadtext="guanzhu.loadtext"></load-more>
+					</scroll-view>
+				</swiper-item>
+				<swiper-item>
+					<scroll-view scroll-y class="list">
+						<!-- <block v-for="(item,index) in list" :key="index">
+							<common-list :item="item" :index="index"></common-list>
+						</block>
+						
+						<load-more :loadtext="items.loadtext"></load-more> -->
+					</scroll-view>
+				</swiper-item>
+			</swiper>
+		</view>
 
 	</view>
 </template>
 
 <script>
-	import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
+	import newsNavBar from '../../components/news/news-nav-bar.vue';
 	import commonList from '../../components/common/common-list.vue';
+	import loadMore from "../../components/common/load-more.vue";
 	export default {
 		components: {
-			uniNavBar,commonList
+			newsNavBar,
+			commonList,
+			loadMore
 		},
 		data() {
 			return {
+				swiperHeight: 500,
 				tabIndex: 0,
 				tabBars: [{
 					name: '关注',
@@ -50,138 +49,143 @@
 					name: "话题",
 					id: "topic"
 				}],
-				list: [{
+				guanzhu: {
+					loadtext: "上拉加载更多",
+					list: [{
 
-					userpic: "../../static/demo/userpic/11.jpg", // 用户头像
-					username: "hhh2", // 用户昵称
-					isguanzhu: false, // 是否关注
-					sex: 0,
-					age: 25,
-					title: "我是标题", // 标题
-					video: false,
-					share: false,
-					path: "深圳 龙岗",
-					commentnum: 0, // 评论
-					sharenum: 11, // 转发（分享）
-					goodnum: 10,
+						userpic: "../../static/demo/userpic/11.jpg", // 用户头像
+						username: "hhh2", // 用户昵称
+						isguanzhu: false, // 是否关注
+						sex: 0,
+						age: 25,
+						title: "我是标题", // 标题
+						video: false,
+						share: false,
+						path: "深圳 龙岗",
+						commentnum: 0, // 评论
+						sharenum: 11, // 转发（分享）
+						goodnum: 10,
 
-				}, {
+					}, {
 
-					userpic: "../../static/demo/userpic/11.jpg", // 用户头像
-					username: "hhh2", // 用户昵称
-					isguanzhu: false, // 是否关注
-					sex: 0,
-					age: 25,
-					title: "我是标题", // 标题
-					video: false,
-					titlepic: "../../static/demo/datapic/10.jpg", // 标题图片
-					share: false,
-					path: "深圳 龙岗",
-					commentnum: 0, // 评论
-					sharenum: 11, // 转发（分享）
-					goodnum: 10,
-
-				}, {
-
-					userpic: "../../static/demo/userpic/11.jpg", // 用户头像
-					username: "hhh2", // 用户昵称
-					isguanzhu: true, // 是否关注
-					sex: 1,
-					age: 25,
-					title: "我是标题", // 标题
-					video: {
-						looknum: "20w",
-						long: "2:33"
-					},
-					titlepic: "../../static/demo/datapic/10.jpg", // 标题图片
-					share: false,
-					path: "深圳 龙岗",
-					commentnum: 0, // 评论
-					sharenum: 11, // 转发（分享）
-					goodnum: 10,
-
-				}, {
-
-					userpic: "../../static/demo/userpic/11.jpg", // 用户头像
-					username: "hhh2", // 用户昵称
-					isguanzhu: true, // 是否关注
-					sex: 1,
-					age: 25,
-					title: "我是标题", // 标题
-					video: false,
-					titlepic: "", // 标题图片
-					share: {
+						userpic: "../../static/demo/userpic/11.jpg", // 用户头像
+						username: "hhh2", // 用户昵称
+						isguanzhu: false, // 是否关注
+						sex: 0,
+						age: 25,
+						title: "我是标题", // 标题
+						video: false,
 						titlepic: "../../static/demo/datapic/10.jpg", // 标题图片
-						title: "我是标题" // 标题
-					},
-					path: "深圳 龙岗",
-					commentnum: 0, // 评论
-					sharenum: 11, // 转发（分享）
-					goodnum: 10,
+						share: false,
+						path: "深圳 龙岗",
+						commentnum: 0, // 评论
+						sharenum: 11, // 转发（分享）
+						goodnum: 10,
 
-				}]
+					}, {
+
+						userpic: "../../static/demo/userpic/11.jpg", // 用户头像
+						username: "hhh2", // 用户昵称
+						isguanzhu: true, // 是否关注
+						sex: 1,
+						age: 25,
+						title: "我是标题", // 标题
+						video: {
+							looknum: "20w",
+							long: "2:33"
+						},
+						titlepic: "../../static/demo/datapic/10.jpg", // 标题图片
+						share: false,
+						path: "深圳 龙岗",
+						commentnum: 0, // 评论
+						sharenum: 11, // 转发（分享）
+						goodnum: 10,
+
+					}, {
+
+						userpic: "../../static/demo/userpic/11.jpg", // 用户头像
+						username: "hhh2", // 用户昵称
+						isguanzhu: true, // 是否关注
+						sex: 1,
+						age: 25,
+						title: "我是标题", // 标题
+						video: false,
+						titlepic: "", // 标题图片
+						share: {
+							titlepic: "../../static/demo/datapic/10.jpg", // 标题图片
+							title: "我是标题" // 标题
+						},
+						path: "深圳 龙岗",
+						commentnum: 0, // 评论
+						sharenum: 11, // 转发（分享）
+						goodnum: 10,
+
+					}]
+				},
 			}
 		},
+		onLoad() {
+			uni.getSystemInfo({
+				success: (res) => {
+					let height = res.windowHeight - uni.upx2px(100);
+					this.swiperHeight = height;
+				}
+			})
+		},
 		methods: {
+			//上拉加载
+			loadmore() {
+				if (this.guanzhu.loadtext != '上拉加载更多') {
+					return;
+				}
+				this.guanzhu.loadtext = "加载中...";
+				setTimeout(() => {
+					//获取数据
+					var obj = {
+						userpic: "../../static/demo/userpic/11.jpg", // 用户头像
+						username: "hhh2", // 用户昵称
+						isguanzhu: true, // 是否关注
+						sex: 1,
+						age: 25,
+						title: "我是标题", // 标题
+						video: {
+							looknum: "20w",
+							long: "2:33"
+						},
+						titlepic: "../../static/demo/datapic/10.jpg", // 标题图片
+						share: false,
+						path: "深圳 龙岗",
+						commentnum: 0, // 评论
+						sharenum: 11, // 转发（分享）
+						goodnum: 10,
+
+					}
+					this.guanzhu.list.push(obj);
+					this.guanzhu.loadtext = "上拉加载更多";
+				}, 1000)
+
+
+				// this.guanzhu.loadtext = "没有更多数据了";
+			},
+
 			openAdd() {
 				uni.navigateTo({
 					url: '../add-input/add-input'
 				})
 			},
+			//点击切换
 			changeTab(index) {
 				this.tabIndex = index;
+			},
+			//滑动切换
+			tabChange(e) {
+				this.tabIndex = e.detail.current;
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.nav-left,
-	.nav-right {
 
-		>view {
-			font-size: 40rpx;
-		}
-	}
-
-	.nav-left {
-		margin-left: 16rpx;
-
-		>view {
-			color: #FFF9619;
-		}
-	}
-
-	.nav-right {
-		margin-right: 5rpx;
-		width: 100%;
-	}
-
-	.nav-tab-bar {
-		width: 100%;
-		margin-left: -20rpx;
-		position: relative;
-
-		>view {
-			font-size: 32rpx;
-			padding: 0 15rpx;
-			font-weight: bold;
-			color: #969696;
-
-		}
-
-		.active {
-			color: #333333 !important;
-
-			.nav-tab-bar-line {
-				border-bottom: 5rpx solid #FEDE33;
-				border-top: 5rpx solid #FEDE33;
-				width: 70rpx;
-				border-radius: 20rpx;
-				position: absolute;
-				bottom: 0rpx;
-			}
-		}
-	}
 
 </style>
