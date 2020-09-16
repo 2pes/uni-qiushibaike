@@ -15,7 +15,7 @@
 			<!-- 视频 -->
 			<template v-if="item.type=='video'">
 				<view class="icon iconfont icon-bofang index-list-play"></view>
-				<view class="index-list-playinfo">{{item.playnum}}万次播放 {{item.long}}</view>
+				<view class="index-list-playinfo">{{item.playnum}}次播放 {{item.long}}</view>
 			</template>
 
 		</view>
