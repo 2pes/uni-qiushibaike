@@ -13,8 +13,31 @@
 						<load-more :loadtext="guanzhu.loadtext"></load-more>
 					</scroll-view>
 				</swiper-item>
+				<!-- 话题 -->
 				<swiper-item>
 					<scroll-view scroll-y class="list">
+						<!-- 搜索-->
+						<view class="search-input">
+							<input class="uni-input" placeholder-class="icon iconfont icon-sousuo topic-search" placeholder="搜索内容">
+						</view>
+
+						<!-- 轮播 -->
+						<view>
+							<swiper class="topic-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+								<block v-for="(item ,index) in topic.swiper" :key="index">
+									<swiper-item>
+										<image :src="item.src" mode="widthFix" lazy-load></image>
+									</swiper-item>
+								</block>
+
+
+							</swiper>
+						</view>
+						<!-- 热门分类 -->
+						<view></view>
+						<!-- 最近更新 -->
+						<view></view>
+
 						<!-- <block v-for="(item,index) in list" :key="index">
 							<common-list :item="item" :index="index"></common-list>
 						</block>
@@ -122,6 +145,16 @@
 
 					}]
 				},
+				
+				topic: {
+					swiper: [{
+						src: "../../static/demo/banner1.jpg"
+					}, {
+						src: "../../static/demo/banner2.jpg"
+					}, {
+						src: "../../static/demo/banner3.jpg"
+					}]
+				}
 			}
 		},
 		onLoad() {
@@ -186,6 +219,27 @@
 </script>
 
 <style lang="scss" scoped>
+	.search-input {
+		padding: 20rpx;
 
+		>input {
+			border-radius: 10rpx;
+			background: #f4f4f4;
+		}
 
+		.topic-search {
+			display: flex;
+			justify-content: center;
+			font-size: 27rpx;
+		}
+	}
+
+	.topic-swiper {
+		padding: 0 20rpx 20rpx 20rpx;
+
+		image {
+			width: 100%;
+			border-radius: 10rpx;
+		}
+	}
 </style>
