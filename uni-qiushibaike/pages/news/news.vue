@@ -34,9 +34,9 @@
 							</swiper>
 						</view>
 						<!-- 热门分类 -->
-						<view></view>
+						<topic-nav :nav="topic.nav"></topic-nav>
 						<!-- 最近更新 -->
-						<view></view>
+						<topic-list :list="topic.list"></topic-list>
 
 						<!-- <block v-for="(item,index) in list" :key="index">
 							<common-list :item="item" :index="index"></common-list>
@@ -55,11 +55,14 @@
 	import newsNavBar from '../../components/news/news-nav-bar.vue';
 	import commonList from '../../components/common/common-list.vue';
 	import loadMore from "../../components/common/load-more.vue";
+	import topicNav from '../../components/news/topic-nav.vue';
+	import topicList from '../../components/news/topic-list.vue';
 	export default {
 		components: {
 			newsNavBar,
 			commonList,
-			loadMore
+			loadMore,
+			topicNav,topicList
 		},
 		data() {
 			return {
@@ -145,7 +148,7 @@
 
 					}]
 				},
-				
+
 				topic: {
 					swiper: [{
 						src: "../../static/demo/banner1.jpg"
@@ -153,6 +156,58 @@
 						src: "../../static/demo/banner2.jpg"
 					}, {
 						src: "../../static/demo/banner3.jpg"
+					}],
+					nav: [{
+								name: "最新"
+							},
+							{
+								name: "游戏"
+							},
+							{
+								name: "打卡"
+							},
+							{
+								name: "情感"
+							},
+							{
+								name: "故事"
+							},
+							{
+								name: "喜爱"
+							}
+						]
+
+						,
+					list: [{
+						title: '#话题名称#',
+						titlepic:'../../static/demo/topicpic/1.jpeg',
+						desc:'话题描述话题描述话题描述话题描述',
+						totalnum:50,
+						todaynum:10
+					}, {
+						title: '#话题名称#',
+						titlepic:'../../static/demo/topicpic/2.jpeg',
+						desc:'话题描述话题描述话题描述话题描述描述话题描述描述话题描述描述话题描述',
+						totalnum:50,
+						todaynum:10
+					}, {
+						title: '#话题名称#',
+						titlepic:'../../static/demo/topicpic/3.jpeg',
+						desc:'话题描述话题描述话题描述话题描述',
+						totalnum:50,
+						todaynum:10
+					}, {
+						title: '#话题名称#',
+						titlepic:'../../static/demo/topicpic/3.jpeg',
+						desc:'话题描述话题描述话题描述话题描述',
+						totalnum:50,
+						todaynum:10
+					}, {
+						title: '#话题名称#',
+						titlepic:'../../static/demo/topicpic/3.jpeg',
+						desc:'话题描述话题描述话题描述话题描述',
+						totalnum:50,
+						todaynum:10
 					}]
 				}
 			}
@@ -242,4 +297,6 @@
 			border-radius: 10rpx;
 		}
 	}
+
+
 </style>
