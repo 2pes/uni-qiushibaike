@@ -36,8 +36,12 @@
 						<!-- 热门分类 -->
 						<topic-nav :nav="topic.nav"></topic-nav>
 						<!-- 最近更新 -->
-						<topic-list :list="topic.list"></topic-list>
-
+						<view class="topic-news ">
+							<view class="">最近更新</view>
+							<block v-for="(item,index) in topic.list" :key="index">
+								<topic-list :item="item" :index="index"></topic-list>
+							</block>
+						</view>
 						<!-- <block v-for="(item,index) in list" :key="index">
 							<common-list :item="item" :index="index"></common-list>
 						</block>
@@ -62,7 +66,8 @@
 			newsNavBar,
 			commonList,
 			loadMore,
-			topicNav,topicList
+			topicNav,
+			topicList
 		},
 		data() {
 			return {
@@ -180,34 +185,46 @@
 						,
 					list: [{
 						title: '#话题名称#',
-						titlepic:'../../static/demo/topicpic/1.jpeg',
-						desc:'话题描述话题描述话题描述话题描述',
-						totalnum:50,
-						todaynum:10
+						titlepic: '../../static/demo/topicpic/1.jpeg',
+						desc: '话题描述话题描述话题描述话题描述',
+						totalnum: 50,
+						todaynum: 10
 					}, {
 						title: '#话题名称#',
-						titlepic:'../../static/demo/topicpic/2.jpeg',
-						desc:'话题描述话题描述话题描述话题描述描述话题描述描述话题描述描述话题描述',
-						totalnum:50,
-						todaynum:10
+						titlepic: '../../static/demo/topicpic/2.jpeg',
+						desc: '话题描述话题描述话题描述话题描述描述话题描述描述话题描述描述话题描述',
+						totalnum: 50,
+						todaynum: 10
 					}, {
 						title: '#话题名称#',
-						titlepic:'../../static/demo/topicpic/3.jpeg',
-						desc:'话题描述话题描述话题描述话题描述',
-						totalnum:50,
-						todaynum:10
+						titlepic: '../../static/demo/topicpic/3.jpeg',
+						desc: '话题描述话题描述话题描述话题描述',
+						totalnum: 50,
+						todaynum: 10
 					}, {
 						title: '#话题名称#',
-						titlepic:'../../static/demo/topicpic/3.jpeg',
-						desc:'话题描述话题描述话题描述话题描述',
-						totalnum:50,
-						todaynum:10
+						titlepic: '../../static/demo/topicpic/3.jpeg',
+						desc: '话题描述话题描述话题描述话题描述',
+						totalnum: 50,
+						todaynum: 10
 					}, {
 						title: '#话题名称#',
-						titlepic:'../../static/demo/topicpic/3.jpeg',
-						desc:'话题描述话题描述话题描述话题描述',
-						totalnum:50,
-						todaynum:10
+						titlepic: '../../static/demo/topicpic/3.jpeg',
+						desc: '话题描述话题描述话题描述话题描述',
+						totalnum: 50,
+						todaynum: 10
+					}, {
+						title: '#话题名称#',
+						titlepic: '../../static/demo/topicpic/3.jpeg',
+						desc: '话题描述话题描述话题描述话题描述',
+						totalnum: 50,
+						todaynum: 10
+					}, {
+						title: '#话题名称#',
+						titlepic: '../../static/demo/topicpic/3.jpeg',
+						desc: '话题描述话题描述话题描述话题描述',
+						totalnum: 50,
+						todaynum: 10
 					}]
 				}
 			}
@@ -298,5 +315,12 @@
 		}
 	}
 
+	.topic-news {
+		padding: 20rpx;
 
+		>view:first-child {
+			padding-bottom: 5rpx;
+			font-size: 32rpx;
+		}
+	}
 </style>

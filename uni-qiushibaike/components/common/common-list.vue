@@ -1,7 +1,7 @@
 <template>
-	<view class="common-list u-f">
+	<view class="common-list u-f animated fadeInLeft fast">
 		<view class="common-list-l">
-			<image src="../../static/demo/userpic/10.jpg" mode="widthFix" lazy-load></image>
+			<image :src="item.userpic" mode="widthFix" lazy-load></image>
 		</view>
 		<view class="common-list-r">
 			<view class="u-f-ac u-f-jsb">
